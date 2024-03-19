@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+const ROOT = process.env.NODE_ENV === 'development' ? '' : '/testa';
+
 let persons = [
     { 
       "id": 1,
@@ -34,24 +38,24 @@ app.use(cors());
 app.use(express.json());
 
 // *************
-app.get('/', (req, res) => {
+app.get(ROOT + '/', (req, res) => {
   res.send('<h1>API running</h1>');
 });
 
 // *************
-app.get('/api/persons', (req, res) => {
+app.get(ROOT + '/api/persons', (req, res) => {
   res.send(persons);
 });
 
 // *************
-app.get('/api/info', (req, res) => {
+app.get(ROOT + '/api/info', (req, res) => {
   res.send(`
     <p>Phonebook has info for ${persons.length} people</p>
     <p>${new Date().toUTCString()}</p>`);
 });
 
 // *************
-app.get('/api/persons/:id', (req, res) => {
+app.get(ROOT + '/api/persons/:id', (req, res) => {
   const id = Number(req.params.id);
   const person = persons.find(obj => obj.id === id);
 
@@ -61,7 +65,7 @@ app.get('/api/persons/:id', (req, res) => {
 });
 
 // *************
-app.delete('/api/persons/:id', (req, res) => {
+app.delete(ROOT + '/api/persons/:id', (req, res) => {
   const person = gPerson(req);
 
   if (!person) return res.status(404).end();
@@ -71,7 +75,7 @@ app.delete('/api/persons/:id', (req, res) => {
 });
 
 // *************
-app.post('/api/persons', (req, res) => {
+app.post(ROOT + '/api/persons', (req, res) => {
   if (!req.body.name || !req.body.number) {
     res.status(400).end();
 
