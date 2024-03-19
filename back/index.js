@@ -35,6 +35,7 @@ const generateId = () => Math.floor(Math.random() * 1000000000);
 
 
 app.use(cors());
+app.use(express.static('dist'));
 app.use(express.json());
 
 // *************
