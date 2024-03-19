@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/testa/",
     "build:dev": "rm -rf dist && rm -rf ../back/dist && npm run build && cp -r dist ../back",
-    "build:prod": "rm -rf dist && npm run build && cp -r dist ~/public_html/testa",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
