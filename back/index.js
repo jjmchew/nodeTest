@@ -39,7 +39,7 @@ app.use(express.static('dist'));
 app.use(express.json());
 
 // *************
-app.get(ROOT + '/', (req, res) => {
+app.get(ROOT + '/api', (req, res) => {
   res.send('<h1>API running</h1>');
 });
 
