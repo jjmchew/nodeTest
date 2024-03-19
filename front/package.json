@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/testa/",
-    "build:dev": "rm -rf dist && rm -rf ../back/dist && npm run build && cp -r dist ../back",
+    "builddev": "NODE_ENV=development vite build --mode development",
+    "build:prod": "rm -rf dist && rm -rf ../back/dist && npm run build && cp -r dist ../back",
+    "build:dev": "rm -rf dist && rm -rf ../back/dist && npm run builddev && cp -r dist ../back",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

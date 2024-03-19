@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:3001/api/persons';
+const BASE_URL = process.env.NODE_ENV === 'production'
+                 ? 'https://jjmchew.a2hosted.com/testa/api/persons'
+                 : 'http://localhost:3001/api/persons';
 
 async function api(method, data=undefined){
   // console.log('api', data);
