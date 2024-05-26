@@ -1,3 +1,3 @@
 # Node / React test project
-- for deployment
+- originally packaged here for deployment to Digital Ocean VPS via github repo
 
